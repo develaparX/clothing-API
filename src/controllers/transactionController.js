@@ -12,9 +12,12 @@ exports.createTransaction = async (req, res) => {
   try {
     const user = await User.findByPk(userId);
     
+    let createdTransaction;
+    let total = null;
+    let details = {};
+
     if (transactionType === 'product') {
       const product = await Product.findByPk(productId);
-
       
       if (!product) {
         return res.status(404).json({ error: 'Product not found' });
@@ -22,7 +25,6 @@ exports.createTransaction = async (req, res) => {
       
       const userWallet = parseFloat(user.wallet);
       const productPrice = parseFloat(product.price);
-      
       
       if (userWallet < productPrice) {
         return res.status(400).json({ error: 'Insufficient balance' });
@@ -32,13 +34,19 @@ exports.createTransaction = async (req, res) => {
       user.points += product.reward_type === 'A' ? 20 : 40;
       
       await user.save();
-      await Transaction.create({ 
-        user_id: userId, 
-        product_id: productId, 
-        amount: productPrice, 
-        transaction_type: 'product' 
+      createdTransaction = await Transaction.create({
+        user_id: userId,
+        product_id: productId,
+        amount: amount,
+        transaction_type: 'product'
       });
-      
+
+      total = productPrice * parseFloat(amount);
+      details = {
+        productName: product.name,
+        price: product.price
+      };
+
     } else if (transactionType === 'reward') {
       const reward = await Reward.findByPk(rewardId);
       if (!reward) {
@@ -49,16 +57,31 @@ exports.createTransaction = async (req, res) => {
       }
       user.points -= reward.points;
       await user.save();
-      await Transaction.create({ 
-        user_id: userId, 
-        reward_id: rewardId, 
-        transaction_type: 'reward' 
+      createdTransaction = await Transaction.create({
+        user_id: userId,
+        reward_id: rewardId,
+        transaction_type: 'reward'
       });
+
+      details = {
+        rewardName: reward.name,
+        points: reward.points
+      };
     } else {
       return res.status(400).json({ error: 'Invalid transaction type' });
     }
-    
-    res.status(201).json({ message: 'Transaction successful' });
+
+    res.status(201).json({ 
+      message: 'Transaction successful',
+      transaction: {
+        id: createdTransaction.id,
+        type: createdTransaction.transaction_type,
+        amount: createdTransaction.amount,
+        createdAt: createdTransaction.created_at,
+        details: details,
+        total: total !== null ? total.toFixed(2) : null
+      }
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
@@ -82,15 +105,33 @@ exports.getCustomerTransactions = async (req, res) => {
       return res.status(404).json({ message: 'No transactions found' });
     }
 
-    const formattedTransactions = transactions.map(transaction => ({
-      id: transaction.id,
-      type: transaction.transaction_type,
-      amount: transaction.amount,
-      createdAt: transaction.created_at,
-      details: transaction.transaction_type === 'product' 
-        ? { productName: transaction.Product.name, price: transaction.Product.price }
-        : { rewardName: transaction.Reward.name, points: transaction.Reward.points }
-    }));
+    const formattedTransactions = transactions.map(transaction => {
+      let details;
+      let total = null;
+
+      if (transaction.transaction_type === 'product') {
+        details = {
+          productName: transaction.Product.name,
+          price: transaction.Product.price
+        };
+        // Hitung total harga
+        total = parseFloat(transaction.Product.price) * parseFloat(transaction.amount);
+      } else {
+        details = {
+          rewardName: transaction.Reward.name,
+          points: transaction.Reward.points
+        };
+      }
+
+      return {
+        id: transaction.id,
+        type: transaction.transaction_type,
+        amount: transaction.amount,
+        createdAt: transaction.created_at,
+        details: details,
+        total: total !== null ? total.toFixed(2) : null // Format total ke 2 desimal
+      };
+    });
 
     res.status(200).json(formattedTransactions);
   } catch (error) {

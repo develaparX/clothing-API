@@ -13,7 +13,19 @@ exports.getCustomerProductTransactions = async (req, res) => {
       ]
     });
 
-    return res.status(200).json({ transactions });
+    const formattedTransactions = transactions.map(transaction => {
+      const total = parseFloat(transaction.amount) * parseFloat(transaction.Product.price);
+      return {
+        id: transaction.id,
+        user: transaction.User,
+        product: transaction.Product,
+        amount: transaction.amount,
+        createdAt: transaction.created_at,
+        total: total.toFixed(2)
+      };
+    });
+
+    return res.status(200).json({ transactions: formattedTransactions });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal server error' });
@@ -30,7 +42,17 @@ exports.getCustomerRewardTransactions = async (req, res) => {
       ]
     });
 
-    return res.status(200).json({ transactions });
+    const formattedTransactions = transactions.map(transaction => {
+      return {
+        id: transaction.id,
+        user: transaction.User,
+        reward: transaction.Reward,
+        createdAt: transaction.created_at,
+        // Untuk transaksi reward, tidak ada total harga, jadi kita tidak menambahkan field total
+      };
+    });
+
+    return res.status(200).json({ transactions: formattedTransactions });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ error: 'Internal server error' });
