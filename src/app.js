@@ -5,7 +5,6 @@ const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
 const rewardRoutes = require('./routes/rewardRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
-const merchantRoutes = require('./routes/merchantRoutes');
 const sequelize = require('./config/database');
 
 const app = express();
@@ -17,7 +16,6 @@ app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/rewards', rewardRoutes);
 app.use('/api/transactions', transactionRoutes);
-app.use('/api/merchants', merchantRoutes);
 
 sequelize.sync()
   .then(() => {
