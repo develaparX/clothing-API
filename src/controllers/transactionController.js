@@ -24,7 +24,6 @@ exports.createTransaction = async (req, res) => {
       transaction: result
     });
   } catch (error) {
-    console.error(error);
     res.status(error.message.includes('not found') ? 404 : 400).json({ error: error.message });
   }
 };
@@ -39,7 +38,6 @@ exports.getCustomerTransactions = async (req, res) => {
     }
     res.status(200).json(transactions);
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -49,7 +47,6 @@ exports.getCustomerProductTransactions = async (req, res) => {
     const transactions = await transactionService.getCustomerProductTransactions();
     res.status(200).json({ transactions });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -59,7 +56,6 @@ exports.getCustomerRewardTransactions = async (req, res) => {
     const transactions = await transactionService.getCustomerRewardTransactions();
     res.status(200).json({ transactions });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };

@@ -1,0 +1,371 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Maju_Mundur",
+    "collectionId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+    "dateExported": "2024-08-07T13:13:44.872Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "e13d2c91-fa49-47ce-94f8-62e967944d83",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2024-08-07T05:20:40.684Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "04fb1762-29ff-47f1-8ed4-b79da4478f71",
+            "name": "Product",
+            "containerId": "",
+            "created": "2024-08-07T05:20:59.505Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "1b38d039-a4d0-433f-9601-cfb622a28a48",
+            "name": "Reward",
+            "containerId": "",
+            "created": "2024-08-07T05:21:19.150Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "99303956-74fc-4613-a426-ae9e7ffd106b",
+            "name": "Transaction",
+            "containerId": "",
+            "created": "2024-08-07T05:21:32.509Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "866756bb-d7aa-4071-88a0-44aab7aa2bb8",
+            "name": "Merchant",
+            "containerId": "",
+            "created": "2024-08-07T08:40:54.042Z",
+            "sortNum": 60000
+        },
+        {
+            "_id": "792e14bb-04d4-4540-a283-39c552284e8a",
+            "name": "Users",
+            "containerId": "",
+            "created": "2024-08-07T11:26:54.029Z",
+            "sortNum": 70000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "3275f9a8-30bf-4937-98b3-78ee8899367c",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "e13d2c91-fa49-47ce-94f8-62e967944d83",
+            "name": "Login user",
+            "url": "localhost:3000/api/auth/login",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-08-07T05:22:06.335Z",
+            "modified": "2024-08-07T13:12:20.668Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"email\":\"cust@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "72ca30fc-fd12-4441-a381-922ca0b101ae",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "e13d2c91-fa49-47ce-94f8-62e967944d83",
+            "name": "Register User",
+            "url": "localhost:3000/api/auth/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-08-07T05:22:16.015Z",
+            "modified": "2024-08-07T13:05:16.148Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"customer 1\",\n  \"email\":\"cust@gmail.com\",\n  \"password\": \"123456\",\n  \"role\": \"customer\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "3739b4ab-380a-4d40-a5c9-29143f55260e",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "04fb1762-29ff-47f1-8ed4-b79da4478f71",
+            "name": "Create Product (Merchant Only)",
+            "url": "localhost:3000/api/products",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-08-07T05:22:36.113Z",
+            "modified": "2024-08-07T13:05:58.513Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Kaos B\",\n  \"price\": \"50000\",\n  \"reward_type\": \"A\"\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lcmNoYW50IiwiaWF0IjoxNzIzMDM1ODk4LCJleHAiOjE3MjMwMzk0OTh9.zu2-EnCjTPEHDhY5X9wqxdzhbEFr1PJ5KIuI-Am0EdA"
+            }
+        },
+        {
+            "_id": "e952745e-95b4-4bf4-8126-31785b08c147",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "04fb1762-29ff-47f1-8ed4-b79da4478f71",
+            "name": "Get Product",
+            "url": "localhost:3000/api/products",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-08-07T05:22:49.515Z",
+            "modified": "2024-08-07T08:23:30.936Z",
+            "headers": []
+        },
+        {
+            "_id": "973d4981-3bb1-4f02-a873-3abe84aacf44",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "04fb1762-29ff-47f1-8ed4-b79da4478f71",
+            "name": "Update Product (Merchant Only)",
+            "url": "localhost:3000/api/products/5",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-08-07T05:23:05.546Z",
+            "modified": "2024-08-07T13:06:37.043Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Kaos Big\",\n  \"price\": 25000,\n  \"reward_type\": \"A\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lcmNoYW50IiwiaWF0IjoxNzIzMDM1ODk4LCJleHAiOjE3MjMwMzk0OTh9.zu2-EnCjTPEHDhY5X9wqxdzhbEFr1PJ5KIuI-Am0EdA"
+            }
+        },
+        {
+            "_id": "03329786-74d5-40be-84ca-87a2d169aa2c",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "04fb1762-29ff-47f1-8ed4-b79da4478f71",
+            "name": "Delete Product (Merchant Only)",
+            "url": "localhost:3000/api/products/5",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-08-07T05:23:13.004Z",
+            "modified": "2024-08-07T13:07:18.502Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lcmNoYW50IiwiaWF0IjoxNzIzMDM1ODk4LCJleHAiOjE3MjMwMzk0OTh9.zu2-EnCjTPEHDhY5X9wqxdzhbEFr1PJ5KIuI-Am0EdA"
+            }
+        },
+        {
+            "_id": "29513b38-c6fd-4a15-8926-1daf245aef8d",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "1b38d039-a4d0-433f-9601-cfb622a28a48",
+            "name": "create rewards (merchant Only)",
+            "url": "localhost:3000/api/rewards",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-08-07T05:29:08.415Z",
+            "modified": "2024-08-07T08:27:06.442Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Voucher Pulsa Listrik\",\n  \"points\": \"50\"\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im1lcmNoYW50IiwiaWF0IjoxNzIzMDE4ODg4LCJleHAiOjE3MjMwMjI0ODh9.B3tuDPOzwMSGNggT-10s4aTD-e2PFjNKugIGU-ln33Q"
+            }
+        },
+        {
+            "_id": "aace817c-e111-4bfd-807d-2399e3b7eefc",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "1b38d039-a4d0-433f-9601-cfb622a28a48",
+            "name": "get rewards",
+            "url": "localhost:3000/api/rewards",
+            "method": "GET",
+            "sortNum": 80000,
+            "created": "2024-08-07T05:29:20.691Z",
+            "modified": "2024-08-07T08:27:31.656Z",
+            "headers": []
+        },
+        {
+            "_id": "729c6b18-e469-4bb1-9573-6ff028a1888c",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "1b38d039-a4d0-433f-9601-cfb622a28a48",
+            "name": "Update Reward (Merchant Only)",
+            "url": "localhost:3000/api/rewards/3",
+            "method": "PUT",
+            "sortNum": 90000,
+            "created": "2024-08-07T05:29:29.730Z",
+            "modified": "2024-08-07T08:28:05.784Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Voucher Pulsa\",\n  \"points\": 20\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6Im1lcmNoYW50IiwiaWF0IjoxNzIzMDE4ODg4LCJleHAiOjE3MjMwMjI0ODh9.B3tuDPOzwMSGNggT-10s4aTD-e2PFjNKugIGU-ln33Q"
+            }
+        },
+        {
+            "_id": "bf2090c3-5d2f-4fa8-a113-34fc2343d86d",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "1b38d039-a4d0-433f-9601-cfb622a28a48",
+            "name": "delete reward (Merchant Only)",
+            "url": "localhost:3000/rewards/4",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-08-07T05:29:39.086Z",
+            "modified": "2024-08-07T05:29:39.086Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJtMSIsInJvbGUiOiJtZXJjaGFudCIsImlhdCI6MTcyMzAwNzY3NywiZXhwIjoxNzIzMDExMjc3fQ.5uBNdcycRWOEr888VezUB2ayWG0aBYC8cg91g3FFVbY"
+            }
+        },
+        {
+            "_id": "dec0b59b-0b34-482e-beaf-83dc5ed4c483",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "99303956-74fc-4613-a426-ae9e7ffd106b",
+            "name": "Create Transaction Product",
+            "url": "localhost:3000/api/transactions/product",
+            "method": "POST",
+            "sortNum": 120000,
+            "created": "2024-08-07T08:29:10.167Z",
+            "modified": "2024-08-07T13:09:08.038Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productId\": 3,\n  \"amount\": 1\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzIzMDM2MTI4LCJleHAiOjE3MjMwMzk3Mjh9.tvuCnNMawedWbtDXsOGoz1ktF9OoNQvp51_kkmBv8Pc"
+            }
+        },
+        {
+            "_id": "06dd3e99-bffd-402a-83ab-cafc3a37aafb",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "99303956-74fc-4613-a426-ae9e7ffd106b",
+            "name": "Create Transaction reward",
+            "url": "localhost:3000/api/transactions/reward",
+            "method": "POST",
+            "sortNum": 140000,
+            "created": "2024-08-07T08:38:24.493Z",
+            "modified": "2024-08-07T13:12:35.404Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\n \"rewardId\": 1,\n  \"amount\": 1\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzIzMDM2MzQwLCJleHAiOjE3MjMwMzk5NDB9.VHle5eDzGL4eWqkvEn_G0giuk4OZDin8HpQ5cN9YvEs"
+            }
+        },
+        {
+            "_id": "381832a4-e608-47b4-9627-2c5a75738aca",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "866756bb-d7aa-4071-88a0-44aab7aa2bb8",
+            "name": "Get Customer Product Transactions",
+            "url": "localhost:3000/api/transactions/products",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2024-08-07T08:41:05.615Z",
+            "modified": "2024-08-07T13:12:02.012Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lcmNoYW50IiwiaWF0IjoxNzIzMDM2MjgwLCJleHAiOjE3MjMwMzk4ODB9.v3b-lfvff5WEwR1cDZEEPnDo9tZJwB52pqiCer8tkmg"
+            }
+        },
+        {
+            "_id": "7e158a3b-1f07-4c12-80f8-dc32b2073708",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "866756bb-d7aa-4071-88a0-44aab7aa2bb8",
+            "name": "Get Customer Reward Transactions",
+            "url": "localhost:3000/api/transactions/rewards",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2024-08-07T08:42:09.332Z",
+            "modified": "2024-08-07T13:11:52.102Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lcmNoYW50IiwiaWF0IjoxNzIzMDM2MjgwLCJleHAiOjE3MjMwMzk4ODB9.v3b-lfvff5WEwR1cDZEEPnDo9tZJwB52pqiCer8tkmg"
+            }
+        },
+        {
+            "_id": "9157efd2-2b75-4448-aa63-db721e0b6ce1",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "99303956-74fc-4613-a426-ae9e7ffd106b",
+            "name": "get All My Transaction",
+            "url": "localhost:3000/api/transactions",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2024-08-07T09:25:14.046Z",
+            "modified": "2024-08-07T10:00:34.230Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzIzMDI0NDM5LCJleHAiOjE3MjMwMjgwMzl9.u8X8DM760BQpUBKsMVFyx6Bx7i7xOLg8Nzif5mz0rjE"
+            }
+        },
+        {
+            "_id": "38b1de5c-df8b-4f0f-877e-80d8ecb4b797",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "792e14bb-04d4-4540-a283-39c552284e8a",
+            "name": "User Details",
+            "url": "localhost:3000/api/users/me",
+            "method": "GET",
+            "sortNum": 180000,
+            "created": "2024-08-07T11:27:42.377Z",
+            "modified": "2024-08-07T13:09:29.084Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwicm9sZSI6ImN1c3RvbWVyIiwiaWF0IjoxNzIzMDM2MTI4LCJleHAiOjE3MjMwMzk3Mjh9.tvuCnNMawedWbtDXsOGoz1ktF9OoNQvp51_kkmBv8Pc"
+            }
+        },
+        {
+            "_id": "0d4dce12-9152-4cdb-b7ef-62dd6e1d8167",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "792e14bb-04d4-4540-a283-39c552284e8a",
+            "name": "Add Balance To Wallet (Merchant Only)",
+            "url": "localhost:3000/api/users/5/wallet",
+            "method": "PUT",
+            "sortNum": 190000,
+            "created": "2024-08-07T11:28:06.238Z",
+            "modified": "2024-08-07T13:10:39.340Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"wallet\": 200000\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lcmNoYW50IiwiaWF0IjoxNzIzMDM2MTg3LCJleHAiOjE3MjMwMzk3ODd9.ZGE3zRMo_qD77Vpp4qrr8HsjEsAXmNTdnPr1xL4SMtI"
+            }
+        },
+        {
+            "_id": "ef6496f0-975e-4d01-98dd-c526e61d1c5c",
+            "colId": "c424e5b1-4abe-462a-91f3-408658b2dccb",
+            "containerId": "792e14bb-04d4-4540-a283-39c552284e8a",
+            "name": "Get All User (merchant Only)",
+            "url": "localhost:3000/api/users/all",
+            "method": "GET",
+            "sortNum": 200000,
+            "created": "2024-08-07T11:28:54.858Z",
+            "modified": "2024-08-07T13:11:28.237Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6Im1lcmNoYW50IiwiaWF0IjoxNzIzMDM2MjgwLCJleHAiOjE3MjMwMzk4ODB9.v3b-lfvff5WEwR1cDZEEPnDo9tZJwB52pqiCer8tkmg"
+            }
+        }
+    ],
+    "ref": "zR18wT4sqRsH1cWKcGkasOLvq53qEpzrNSYkd90OThhu6fNQNfiXxJhcDSKMtvlKRYgFeaurURdLNFmWC7x0QQ"
+}

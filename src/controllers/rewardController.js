@@ -6,7 +6,6 @@ exports.createReward = async (req, res) => {
     const reward = await Reward.create({ name, points });
     res.status(201).json({ reward });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -24,7 +23,6 @@ exports.updateReward = async (req, res) => {
     await reward.save();
     res.status(200).json({ reward });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -39,7 +37,6 @@ exports.deleteReward = async (req, res) => {
     await reward.destroy();
     res.status(204).send();
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -49,7 +46,6 @@ exports.getAllRewards = async (req, res) => {
     const rewards = await Reward.findAll();
     res.status(200).json({ rewards });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };

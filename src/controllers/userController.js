@@ -5,7 +5,6 @@ exports.getUserDetails = async (req, res) => {
     const user = await User.findByPk(req.user.id);
     res.status(200).json({ user });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -22,7 +21,17 @@ exports.updateUserWallet = async (req, res) => {
     await user.save();
     res.status(200).json({ user });
   } catch (error) {
-    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const users = await User.findAll({
+      attributes: ['id', 'username', 'email', 'role', 'wallet', 'points', 'created_at', 'updated_at']
+    });
+    res.status(200).json({ users });
+  } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
 };

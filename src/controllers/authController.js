@@ -9,7 +9,6 @@ exports.register = async (req, res) => {
     const user = await User.create({ username, email, password: hashedPassword, role });
     res.status(201).json({ user });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
@@ -24,7 +23,6 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
     res.status(200).json({ token });
   } catch (error) {
-    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
