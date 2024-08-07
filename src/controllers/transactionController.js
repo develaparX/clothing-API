@@ -14,17 +14,30 @@ exports.createTransaction = async (req, res) => {
     
     if (transactionType === 'product') {
       const product = await Product.findByPk(productId);
+
+      
       if (!product) {
         return res.status(404).json({ error: 'Product not found' });
       }
-      if (user.wallet < product.price) {
+      
+      const userWallet = parseFloat(user.wallet);
+      const productPrice = parseFloat(product.price);
+      
+      
+      if (userWallet < productPrice) {
         return res.status(400).json({ error: 'Insufficient balance' });
       }
-      user.wallet -= product.price;
+      
+      user.wallet = (userWallet - productPrice).toString(); // Convert back to string
       user.points += product.reward_type === 'A' ? 20 : 40;
       
       await user.save();
-      await Transaction.create({ user_id: userId, product_id: productId, amount: product.price, transaction_type: 'product' });
+      await Transaction.create({ 
+        user_id: userId, 
+        product_id: productId, 
+        amount: productPrice, 
+        transaction_type: 'product' 
+      });
       
     } else if (transactionType === 'reward') {
       const reward = await Reward.findByPk(rewardId);
@@ -36,7 +49,11 @@ exports.createTransaction = async (req, res) => {
       }
       user.points -= reward.points;
       await user.save();
-      await Transaction.create({ user_id: userId, reward_id: rewardId, transaction_type: 'reward' });
+      await Transaction.create({ 
+        user_id: userId, 
+        reward_id: rewardId, 
+        transaction_type: 'reward' 
+      });
     } else {
       return res.status(400).json({ error: 'Invalid transaction type' });
     }
