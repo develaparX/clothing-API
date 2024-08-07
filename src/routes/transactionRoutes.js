@@ -1,8 +1,11 @@
 const express = require('express');
-const { createTransaction } = require('../controllers/transactionController');
+const { createTransaction, getCustomerTransactions } = require('../controllers/transactionController');
 const { verifyToken } = require('../middleware/authMiddleware');
 const router = express.Router();
 
-router.post('/', verifyToken, createTransaction);
+router.post('/:type', verifyToken, createTransaction);
+
+router.get('/', verifyToken, getCustomerTransactions);
+
 
 module.exports = router;
