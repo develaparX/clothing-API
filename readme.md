@@ -1,4 +1,3 @@
-Here's a comprehensive documentation for your `majumundurapp` project, including the package dependencies, setup instructions, and how to run the application.
 
 ### Project Overview
 
